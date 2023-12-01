@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  mini:
+    build:
+      context: .
+      dockerfile: $PWD/Dockerfile
+    image: mnott/mini
+    volumes:
+      - /data-intern/vmware/docker/Minimal/test:/test
+    environment:
+      - DISPLAY
+    stdin_open: true
+    tty: true
+    networks:
+      dockernet:
+        ipv4_address: 192.168.1.111
+
+networks:
+  dockernet:
+    external: true
